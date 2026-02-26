@@ -11,10 +11,10 @@ import { Report } from "@/entities/Report";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
-  host: process.env.DB_HOST || "localhost",
+  host: process.env.DB_HOST || "127.0.0.1",
   port: parseInt(process.env.DB_PORT || "3306"),
-  username: process.env.DB_USERNAME || "root",
-  password: process.env.DB_PASSWORD || "",
+  username: process.env.DB_USERNAME || "rushan",
+  password: process.env.DB_PASSWORD || "12345678",
   database: process.env.DB_DATABASE || "stockwise_db",
   synchronize: true,
   logging: process.env.NODE_ENV === "development",
