@@ -260,8 +260,8 @@ export default function UsersPage() {
           <thead>
             <tr>
               <Th>Feature</Th>
-              <Th>🔑 Admin</Th>
-              <Th>🏪 Store Manager</Th>
+              <Th>Admin</Th>
+              <Th>Store Manager</Th>
             </tr>
           </thead>
           <tbody>

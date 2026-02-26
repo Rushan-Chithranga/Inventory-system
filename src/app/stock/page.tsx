@@ -5,7 +5,7 @@ import AppShell from "@/components/layout/AppShell";
 import { Card, CardHeader, StatCard, Button, Modal, Input, Badge, Table, Th, Td, EmptyState, StockBar } from "@/components/ui";
 import { useApiRequest } from "@/lib/auth-context";
 import { ProductType } from "@/types";
-import { DollarCircleIcon, Package, Package03Icon, PackageIcon, PackageOutOfStockIcon } from "@hugeicons/core-free-icons";
+import { DollarCircleIcon, Package03Icon, PackageIcon, PackageOutOfStockIcon } from "@hugeicons/core-free-icons";
 
 export default function StockPage() {
   const apiFetch = useApiRequest();

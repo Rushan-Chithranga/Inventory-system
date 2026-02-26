@@ -56,7 +56,7 @@ export default function Sidebar({ lowStockCount = 0 }: SidebarProps) {
 
   return (
     <aside className="fixed top-0 left-0 bottom-0 w-60 bg-[#111] border-r border-[#1e1e1e] flex flex-col z-50">
-      <div className="px-5 py-6 border-b border-[#1e1e1e] flex items-center gap-3">
+      <div className="px-5 py-6 border-b border-[#1e1e1e] flex items-center gap-3 cursor-pointer" onClick={() => window.location.replace("/dashboard")}>
         <div className="w-9 h-9 border p-2 border-gray-500 flex items-center justify-center text-lg flex-shrink-0 backdrop-blur-[6px] rounded-[8px]">
           <HugeiconsIcon
             icon={PackageIcon}
