@@ -19,7 +19,12 @@ import {
 } from "@/components/ui";
 import { useApiRequest } from "@/lib/auth-context";
 import { ProductType } from "@/types";
-import { Delete02Icon, Edit04Icon, Package } from "@hugeicons/core-free-icons";
+import {
+  Delete02Icon,
+  Edit04Icon,
+  Package,
+  Search02Icon,
+} from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
 const CATEGORIES = [
@@ -129,7 +134,12 @@ export default function ProductsPage() {
       <div className="flex items-center gap-3 mb-5 flex-wrap">
         <div className="relative flex-1 min-w-[200px] max-w-sm">
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600 text-sm">
-            🔍
+            <HugeiconsIcon
+              icon={Search02Icon}
+              size={24}
+              color="currentColor"
+              strokeWidth={1.5}
+            />
           </span>
           <input
             placeholder="Search products or barcode…"
