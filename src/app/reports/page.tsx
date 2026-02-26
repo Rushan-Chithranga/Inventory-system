@@ -5,6 +5,7 @@ import AppShell from "@/components/layout/AppShell";
 import { Card, CardHeader, StatCard, Button, Modal, Select, Badge, Table, Th, Td, EmptyState } from "@/components/ui";
 import { useApiRequest } from "@/lib/auth-context";
 import { ReportType } from "@/types";
+import { DollarCircleIcon } from "@hugeicons/core-free-icons";
 
 const REPORT_TYPES = [
   { value: "Stock Level", label: "Stock Level" },
@@ -54,9 +55,9 @@ export default function ReportsPage() {
   return (
     <AppShell title="All Reports">
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <StatCard label="Total Reports" value={reports.length} icon="📋" />
-        <StatCard label="This Month" value={reports.filter(r => new Date(r.generatedAt).getMonth() === new Date().getMonth()).length} icon="📅" />
-        <StatCard label="Warnings" value={warningCount} icon="⚠️" changeType={warningCount > 0 ? "warn" : undefined} />
+        <StatCard label="Total Reports" value={reports.length} icon={DollarCircleIcon} />
+        <StatCard label="This Month" value={reports.filter(r => new Date(r.generatedAt).getMonth() === new Date().getMonth()).length} icon={DollarCircleIcon} />
+        <StatCard label="Warnings" value={warningCount} icon={DollarCircleIcon} changeType={warningCount > 0 ? "warn" : undefined} />
       </div>
 
       <div className="flex items-center justify-end mb-5">

@@ -30,5 +30,4 @@ body {
 ::-webkit-scrollbar-track { background: #111; }
 ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
 
-/* Custom scrollbar for Firefox */
 * { scrollbar-width: thin; scrollbar-color: var(--orange) #111; }

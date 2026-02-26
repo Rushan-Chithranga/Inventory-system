@@ -21,7 +21,6 @@ export async function GET(req: NextRequest) {
     const lowStockProducts = products.filter(p => p.stock > 0 && p.stock <= p.lowStockThreshold);
     const outOfStockProducts = products.filter(p => p.stock === 0);
 
-    // Monthly sales (last 12 months)
     const monthlySales = Array.from({ length: 12 }, (_, i) => {
       const d = new Date();
       d.setMonth(d.getMonth() - (11 - i));
@@ -38,7 +37,6 @@ export async function GET(req: NextRequest) {
       };
     });
 
-    // Category revenue
     const catMap: Record<string, number> = {};
     sales.forEach(s => {
       catMap[s.productCategory] = (catMap[s.productCategory] || 0) + Number(s.totalPrice);

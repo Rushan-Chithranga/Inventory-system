@@ -7,6 +7,8 @@ import { useApiRequest } from "@/lib/auth-context";
 import { DashboardStats } from "@/types";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { useRouter } from "next/navigation";
+import { AutoConversationsIcon, CorporateIcon, DollarCircleIcon, PackageIcon, SecurityWarningIcon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 const COLORS = ["#f97316", "#ea580c", "#fb923c", "#fed7aa", "#fdba74"];
 
@@ -42,15 +44,13 @@ export default function DashboardPage() {
         </AlertBar>
       )}
 
-      {/* Stats */}
       <div className="grid grid-cols-4 gap-4 mb-6">
-        <StatCard label="Total Revenue" value={fmt(stats?.totalRevenue || 0)} icon="📈" change="↑ 12.4% this month" changeType="up" />
-        <StatCard label="Total Products" value={stats?.totalProducts || 0} icon="📦" change={`${stats?.lowStockCount || 0} low stock`} changeType="warn" />
-        <StatCard label="Items in Stock" value={(stats?.totalStock || 0).toLocaleString()} icon="🗄️" change="↑ 3.1% this week" changeType="up" />
-        <StatCard label="Total Sales" value={stats?.totalSales || 0} icon="🧾" change="All time transactions" />
+        <StatCard label="Total Revenue" value={fmt(stats?.totalRevenue || 0)} icon={DollarCircleIcon} change="↑ 12.4% this month" changeType="up" />
+        <StatCard label="Total Products" value={stats?.totalProducts || 0} icon={PackageIcon} change={`${stats?.lowStockCount || 0} low stock`} changeType="warn" />
+        <StatCard label="Items in Stock" value={(stats?.totalStock || 0).toLocaleString()} icon={AutoConversationsIcon} change="↑ 3.1% this week" changeType="up" />
+        <StatCard label="Total Sales" value={stats?.totalSales || 0} icon={CorporateIcon} change="All time transactions" />
       </div>
 
-      {/* Charts */}
       <div className="grid grid-cols-2 gap-4 mb-6">
         <Card>
           <CardHeader>
@@ -105,7 +105,6 @@ export default function DashboardPage() {
         </Card>
       </div>
 
-      {/* Bottom Tables */}
       <div className="grid grid-cols-2 gap-4">
         <Card>
           <CardHeader>
@@ -129,7 +128,12 @@ export default function DashboardPage() {
 
         <Card>
           <CardHeader>
-            <div className="font-bold text-white text-sm">⚠️ Low Stock Alert</div>
+            <div className="font-bold text-white text-sm"><HugeiconsIcon
+            icon={SecurityWarningIcon}
+            size={24}
+            color="currentColor"
+            strokeWidth={1.5}
+          /> Low Stock Alert</div>
             <Button variant="secondary" size="sm" onClick={() => router.push("/stock")}>Manage</Button>
           </CardHeader>
           <Table>

@@ -5,6 +5,7 @@ import AppShell from "@/components/layout/AppShell";
 import { Card, CardHeader, StatCard, Button, Badge, Table, Th, Td, EmptyState } from "@/components/ui";
 import { useApiRequest } from "@/lib/auth-context";
 import { SaleType } from "@/types";
+import { DollarCircleIcon } from "@hugeicons/core-free-icons";
 
 const CATEGORIES = ["", "Electronics", "Furniture", "Stationery", "Clothing", "Food & Beverage", "Tools", "Other"];
 
@@ -43,9 +44,9 @@ export default function SalesPage() {
   return (
     <AppShell title="Sales Report">
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <StatCard label="Total Revenue" value={fmt(totalRevenue)} icon="💰" />
-        <StatCard label="Transactions" value={sales.length} icon="🧾" />
-        <StatCard label="Units Sold" value={totalQty} icon="📦" />
+        <StatCard label="Total Revenue" value={fmt(totalRevenue)} icon={DollarCircleIcon} />
+        <StatCard label="Transactions" value={sales.length} icon={DollarCircleIcon} />
+        <StatCard label="Units Sold" value={totalQty} icon={DollarCircleIcon} />
       </div>
 
       <div className="flex items-center gap-3 mb-5 flex-wrap">

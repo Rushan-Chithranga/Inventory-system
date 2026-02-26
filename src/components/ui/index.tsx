@@ -1,3 +1,5 @@
+import { SecurityWarningIcon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import clsx from "clsx";
 import { ReactNode } from "react";
 
@@ -6,6 +8,8 @@ interface BtnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "sm" | "md";
   children: ReactNode;
 }
+
+type IconType = React.ComponentProps<typeof HugeiconsIcon>["icon"];
 
 export function Button({
   variant = "primary",
@@ -20,11 +24,14 @@ export function Button({
         "inline-flex items-center gap-1.5 font-semibold rounded-lg transition-all cursor-pointer border-0",
         size === "sm" ? "text-xs px-3 py-1.5" : "text-sm px-4 py-2.5",
         variant === "primary" && "bg-orange-500 text-black hover:bg-orange-600",
-        variant === "secondary" && "bg-[#1e1e1e] text-gray-300 border border-[#2a2a2a] hover:border-gray-500 hover:text-white",
-        variant === "danger" && "bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20",
-        variant === "ghost" && "text-gray-500 hover:text-white hover:bg-white/5",
+        variant === "secondary" &&
+          "bg-[#1e1e1e] text-gray-300 border border-[#2a2a2a] hover:border-gray-500 hover:text-white",
+        variant === "danger" &&
+          "bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20",
+        variant === "ghost" &&
+          "text-gray-500 hover:text-white hover:bg-white/5",
         "disabled:opacity-50 disabled:cursor-not-allowed",
-        className
+        className,
       )}
       {...props}
     >
@@ -33,17 +40,39 @@ export function Button({
   );
 }
 
-export function Card({ children, className }: { children: ReactNode; className?: string }) {
+export function Card({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <div className={clsx("bg-[#111] border border-[#1e1e1e] rounded-2xl overflow-hidden", className)}>
+    <div
+      className={clsx(
+        "bg-[#111] border border-[#1e1e1e] rounded-2xl overflow-hidden",
+        className,
+      )}
+    >
       {children}
     </div>
   );
 }
 
-export function CardHeader({ children, className }: { children: ReactNode; className?: string }) {
+export function CardHeader({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <div className={clsx("px-5 py-4 border-b border-[#1e1e1e] flex items-center justify-between", className)}>
+    <div
+      className={clsx(
+        "px-5 py-4 border-b border-[#1e1e1e] flex items-center justify-between",
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -52,20 +81,35 @@ export function CardHeader({ children, className }: { children: ReactNode; class
 interface StatCardProps {
   label: string;
   value: string | number;
-  icon: string;
+  icon: IconType;
   change?: string;
   changeType?: "up" | "down" | "warn";
 }
 
-export function StatCard({ label, value, icon, change, changeType }: StatCardProps) {
+export function StatCard({
+  label,
+  value,
+  icon,
+  change,
+  changeType,
+}: StatCardProps) {
   return (
     <div className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-5 relative overflow-hidden hover:border-[#333] transition-colors">
       <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-radial from-orange-500/8 to-transparent rounded-full translate-x-5 -translate-y-5" />
       <div className="w-10 h-10 bg-orange-500/12 rounded-xl flex items-center justify-center text-lg mb-3.5">
-        {icon}
+        <HugeiconsIcon
+          icon={icon}
+          size={24}
+          color="currentColor"
+          strokeWidth={1.5}
+        />
       </div>
-      <div className="text-[11px] text-gray-600 uppercase tracking-widest font-semibold">{label}</div>
-      <div className="text-3xl font-bold text-white mt-1 leading-none">{value}</div>
+      <div className="text-[11px] text-gray-600 uppercase tracking-widest font-semibold">
+        {label}
+      </div>
+      <div className="text-3xl font-bold text-white mt-1 leading-none">
+        {value}
+      </div>
       {change && (
         <div
           className={clsx(
@@ -73,7 +117,7 @@ export function StatCard({ label, value, icon, change, changeType }: StatCardPro
             changeType === "up" && "text-green-400",
             changeType === "down" && "text-red-400",
             changeType === "warn" && "text-orange-400",
-            !changeType && "text-gray-500"
+            !changeType && "text-gray-500",
           )}
         >
           {change}
@@ -85,7 +129,13 @@ export function StatCard({ label, value, icon, change, changeType }: StatCardPro
 
 type BadgeVariant = "green" | "red" | "orange" | "blue" | "gray";
 
-export function Badge({ children, variant = "gray" }: { children: ReactNode; variant?: BadgeVariant }) {
+export function Badge({
+  children,
+  variant = "gray",
+}: {
+  children: ReactNode;
+  variant?: BadgeVariant;
+}) {
   return (
     <span
       className={clsx(
@@ -94,7 +144,7 @@ export function Badge({ children, variant = "gray" }: { children: ReactNode; var
         variant === "red" && "bg-red-500/10 text-red-400",
         variant === "orange" && "bg-orange-500/10 text-orange-400",
         variant === "blue" && "bg-blue-500/10 text-blue-400",
-        variant === "gray" && "bg-white/6 text-gray-500"
+        variant === "gray" && "bg-white/6 text-gray-500",
       )}
     >
       {children}
@@ -118,7 +168,7 @@ export function Input({ label, className, ...props }: InputProps) {
         className={clsx(
           "bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg px-3 py-2.5 text-sm text-gray-100",
           "focus:outline-none focus:border-orange-500 transition-colors placeholder:text-gray-700",
-          className
+          className,
         )}
         {...props}
       />
@@ -143,7 +193,7 @@ export function Select({ label, options, className, ...props }: SelectProps) {
         className={clsx(
           "bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg px-3 py-2.5 text-sm text-gray-100",
           "focus:outline-none focus:border-orange-500 transition-colors appearance-none cursor-pointer",
-          className
+          className,
         )}
         {...props}
       >
@@ -157,7 +207,8 @@ export function Select({ label, options, className, ...props }: SelectProps) {
   );
 }
 
-interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
 }
 
@@ -173,7 +224,7 @@ export function Textarea({ label, className, ...props }: TextareaProps) {
         className={clsx(
           "bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg px-3 py-2.5 text-sm text-gray-100",
           "focus:outline-none focus:border-orange-500 transition-colors resize-y min-h-[80px]",
-          className
+          className,
         )}
         {...props}
       />
@@ -190,7 +241,14 @@ interface ModalProps {
   maxWidth?: string;
 }
 
-export function Modal({ open, onClose, title, children, footer, maxWidth = "max-w-lg" }: ModalProps) {
+export function Modal({
+  open,
+  onClose,
+  title,
+  children,
+  footer,
+  maxWidth = "max-w-lg",
+}: ModalProps) {
   if (!open) return null;
   return (
     <div
@@ -201,7 +259,7 @@ export function Modal({ open, onClose, title, children, footer, maxWidth = "max-
         className={clsx(
           "bg-[#111] border border-[#2a2a2a] rounded-2xl w-full max-h-[90vh] overflow-y-auto",
           "animate-[slideUp_0.2s_ease]",
-          maxWidth
+          maxWidth,
         )}
         style={{ animation: "slideUp 0.2s ease" }}
       >
@@ -226,21 +284,39 @@ export function Modal({ open, onClose, title, children, footer, maxWidth = "max-
   );
 }
 
-export function StockBar({ stock, threshold }: { stock: number; threshold: number }) {
+export function StockBar({
+  stock,
+  threshold,
+}: {
+  stock: number;
+  threshold: number;
+}) {
   const status = stock === 0 ? "out" : stock <= threshold ? "low" : "ok";
   const pct = Math.min((stock / (threshold * 3)) * 100, 100);
-  const color = status === "ok" ? "#22c55e" : status === "low" ? "#f97316" : "#ef4444";
+  const color =
+    status === "ok" ? "#22c55e" : status === "low" ? "#f97316" : "#ef4444";
   return (
     <div>
-      <div className="font-bold text-sm" style={{ color }}>{stock}</div>
+      <div className="font-bold text-sm" style={{ color }}>
+        {stock}
+      </div>
       <div className="w-16 h-1 bg-[#1e1e1e] rounded-full mt-1">
-        <div className="h-full rounded-full" style={{ width: `${pct}%`, background: color }} />
+        <div
+          className="h-full rounded-full"
+          style={{ width: `${pct}%`, background: color }}
+        />
       </div>
     </div>
   );
 }
 
-export function EmptyState({ icon, message }: { icon: string; message: string }) {
+export function EmptyState({
+  icon,
+  message,
+}: {
+  icon: string;
+  message: string;
+}) {
   return (
     <div className="text-center py-16 text-gray-600">
       <div className="text-5xl mb-3">{icon}</div>
@@ -252,15 +328,28 @@ export function EmptyState({ icon, message }: { icon: string; message: string })
 export function AlertBar({ children }: { children: ReactNode }) {
   return (
     <div className="bg-orange-500/8 border border-orange-500/25 rounded-xl px-4 py-3 flex items-center gap-2.5 mb-5 text-sm text-orange-400">
-      ⚠️ {children}
+      <HugeiconsIcon
+        icon={SecurityWarningIcon}
+        size={24}
+        color="currentColor"
+        strokeWidth={1.8}
+      />{" "}
+      {children}
     </div>
   );
 }
-
-export function Table({ children, className }: { children: ReactNode; className?: string }) {
+export function Table({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <div className="overflow-x-auto">
-      <table className={clsx("w-full border-collapse", className)}>{children}</table>
+      <table className={clsx("w-full border-collapse", className)}>
+        {children}
+      </table>
     </div>
   );
 }
@@ -273,9 +362,20 @@ export function Th({ children }: { children: ReactNode }) {
   );
 }
 
-export function Td({ children, className }: { children: ReactNode; className?: string }) {
+export function Td({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <td className={clsx("px-4 py-3.5 text-sm text-gray-400 border-b border-[#141414]", className)}>
+    <td
+      className={clsx(
+        "px-4 py-3.5 text-sm text-gray-400 border-b border-[#141414]",
+        className,
+      )}
+    >
       {children}
     </td>
   );

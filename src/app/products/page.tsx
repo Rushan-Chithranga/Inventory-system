@@ -90,7 +90,6 @@ export default function ProductsPage() {
 
   return (
     <AppShell title="Product Management">
-      {/* Filter row */}
       <div className="flex items-center gap-3 mb-5 flex-wrap">
         <div className="relative flex-1 min-w-[200px] max-w-sm">
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600 text-sm">🔍</span>
@@ -158,7 +157,6 @@ export default function ProductsPage() {
         )}
       </Card>
 
-      {/* Add/Edit Modal */}
       <Modal
         open={showModal}
         onClose={() => setShowModal(false)}
@@ -192,7 +190,6 @@ export default function ProductsPage() {
         </div>
       </Modal>
 
-      {/* Delete Modal */}
       <Modal
         open={!!confirmDelete}
         onClose={() => setConfirmDelete(null)}

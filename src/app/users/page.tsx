@@ -5,6 +5,7 @@ import AppShell from "@/components/layout/AppShell";
 import { Card, CardHeader, StatCard, Button, Modal, Input, Select, Badge, Table, Th, Td, EmptyState } from "@/components/ui";
 import { useApiRequest, useAuth } from "@/lib/auth-context";
 import { UserType } from "@/types";
+import { DollarCircleIcon } from "@hugeicons/core-free-icons";
 
 export default function UsersPage() {
   const apiFetch = useApiRequest();
@@ -60,9 +61,9 @@ export default function UsersPage() {
   return (
     <AppShell title="Users & Roles">
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <StatCard label="Total Users" value={users.length} icon="👥" />
-        <StatCard label="Admins" value={adminCount} icon="🔑" />
-        <StatCard label="Active Users" value={activeCount} icon="✅" />
+        <StatCard label="Total Users" value={users.length} icon={DollarCircleIcon} />
+        <StatCard label="Admins" value={adminCount} icon={DollarCircleIcon} />
+        <StatCard label="Active Users" value={activeCount} icon={DollarCircleIcon} />
       </div>
 
       <div className="flex items-center justify-end mb-5">
@@ -124,7 +125,6 @@ export default function UsersPage() {
         )}
       </Card>
 
-      {/* Permissions matrix */}
       <Card>
         <CardHeader>
           <div>
@@ -146,7 +146,6 @@ export default function UsersPage() {
         </Table>
       </Card>
 
-      {/* Add User Modal */}
       <Modal
         open={showModal}
         onClose={() => setShowModal(false)}

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useAuth } from "@/lib/auth-context";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { PackageIcon } from "@hugeicons/core-free-icons";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -25,23 +27,29 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
-      {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-orange-600/5 rounded-full blur-3xl" />
       </div>
 
       <div className="w-full max-w-md relative">
-        {/* Logo */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500 rounded-2xl text-3xl mb-4 shadow-lg shadow-orange-500/25">
-            📦
+            <HugeiconsIcon
+              icon={PackageIcon}
+              size={24}
+              color="currentColor"
+              strokeWidth={1.5}
+            />
           </div>
-          <h1 className="font-display text-4xl tracking-widest text-white">STOCKWISE</h1>
-          <p className="text-gray-600 text-sm mt-1 tracking-widest uppercase">Inventory Management Pro</p>
+          <h1 className="font-display text-4xl tracking-widest text-white">
+            STOCKWISE
+          </h1>
+          <p className="text-gray-600 text-sm mt-1 tracking-widest uppercase">
+            Inventory Management Pro
+          </p>
         </div>
 
-        {/* Card */}
         <div className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-8">
           <h2 className="text-lg font-bold text-white mb-1">Welcome back</h2>
           <p className="text-gray-600 text-sm mb-7">Sign in to your account</p>
@@ -90,22 +98,38 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Demo creds */}
           <div className="mt-6 pt-5 border-t border-[#1e1e1e]">
-            <p className="text-xs text-gray-600 mb-3 text-center uppercase tracking-wider">Demo Accounts</p>
+            <p className="text-xs text-gray-600 mb-3 text-center uppercase tracking-wider">
+              Demo Accounts
+            </p>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { role: "Admin", email: "admin@stockwise.com", pass: "admin123" },
-                { role: "Manager", email: "manager@stockwise.com", pass: "manager123" },
+                {
+                  role: "Admin",
+                  email: "admin@stockwise.com",
+                  pass: "admin123",
+                },
+                {
+                  role: "Manager",
+                  email: "manager@stockwise.com",
+                  pass: "manager123",
+                },
               ].map((d) => (
                 <button
                   key={d.role}
                   type="button"
-                  onClick={() => { setEmail(d.email); setPassword(d.pass); }}
+                  onClick={() => {
+                    setEmail(d.email);
+                    setPassword(d.pass);
+                  }}
                   className="bg-[#1a1a1a] hover:bg-[#222] border border-[#2a2a2a] rounded-lg px-3 py-2.5 text-left transition-colors"
                 >
-                  <div className="text-xs font-bold text-orange-500">{d.role}</div>
-                  <div className="text-[10px] text-gray-600 truncate mt-0.5">{d.email}</div>
+                  <div className="text-xs font-bold text-orange-500">
+                    {d.role}
+                  </div>
+                  <div className="text-[10px] text-gray-600 truncate mt-0.5">
+                    {d.email}
+                  </div>
                 </button>
               ))}
             </div>

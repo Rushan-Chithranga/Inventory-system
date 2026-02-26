@@ -13,7 +13,6 @@ async function seed() {
   await AppDataSource.initialize();
   console.log("📦 Connected to database. Seeding...");
 
-  // Users
   const userRepo = AppDataSource.getRepository(User);
   const adminPass = await hashPassword("admin123");
   const managerPass = await hashPassword("manager123");
@@ -36,7 +35,6 @@ async function seed() {
   await userRepo.save([admin, manager]);
   console.log("✅ Users seeded");
 
-  // Products
   const productRepo = AppDataSource.getRepository(Product);
   const products = productRepo.create([
     { name: "Wireless Headphones", description: "Noise-cancelling over-ear headphones", category: "Electronics", price: 149.99, stock: 45, barcode: "8901234567890", lowStockThreshold: 10 },
@@ -51,7 +49,6 @@ async function seed() {
   const savedProducts = await productRepo.save(products);
   console.log("✅ Products seeded");
 
-  // Sales
   const saleRepo = AppDataSource.getRepository(Sale);
   const sales = saleRepo.create([
     { productId: savedProducts[0].id, productName: savedProducts[0].name, productCategory: "Electronics", quantity: 5, unitPrice: 149.99, totalPrice: 749.95 },

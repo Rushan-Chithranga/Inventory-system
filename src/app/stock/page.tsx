@@ -5,6 +5,7 @@ import AppShell from "@/components/layout/AppShell";
 import { Card, CardHeader, StatCard, Button, Modal, Input, Badge, Table, Th, Td, EmptyState, StockBar } from "@/components/ui";
 import { useApiRequest } from "@/lib/auth-context";
 import { ProductType } from "@/types";
+import { DollarCircleIcon } from "@hugeicons/core-free-icons";
 
 export default function StockPage() {
   const apiFetch = useApiRequest();
@@ -48,10 +49,10 @@ export default function StockPage() {
   return (
     <AppShell title="Stock Report">
       <div className="grid grid-cols-4 gap-4 mb-6">
-        <StatCard label="Total Products" value={products.length} icon="📦" />
-        <StatCard label="Low Stock" value={lowCount} icon="⚠️" changeType="warn" change={lowCount > 0 ? "Needs restocking" : ""} />
-        <StatCard label="Out of Stock" value={outCount} icon="🚫" changeType={outCount > 0 ? "down" : undefined} change={outCount > 0 ? "Urgent reorder!" : ""} />
-        <StatCard label="Inventory Value" value={`$${totalValue.toFixed(0)}`} icon="💵" changeType="up" />
+        <StatCard label="Total Products" value={products.length} icon={DollarCircleIcon} />
+        <StatCard label="Low Stock" value={lowCount} icon={DollarCircleIcon} changeType="warn" change={lowCount > 0 ? "Needs restocking" : ""} />
+        <StatCard label="Out of Stock" value={outCount} icon={DollarCircleIcon} changeType={outCount > 0 ? "down" : undefined} change={outCount > 0 ? "Urgent reorder!" : ""} />
+        <StatCard label="Inventory Value" value={`$${totalValue.toFixed(0)}`} icon={DollarCircleIcon} changeType="up" />
       </div>
 
       <div className="flex items-center gap-3 mb-5 flex-wrap">

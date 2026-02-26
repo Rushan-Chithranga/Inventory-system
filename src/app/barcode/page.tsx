@@ -42,7 +42,6 @@ export default function BarcodePage() {
 
   const simulateScan = () => {
     setScanning(true);
-    // In real app, this would open device camera / connect to scanner hardware
     const mockBarcodes = ["8901234567890", "8901234567891", "8901234567892", "8901234567893"];
     const picked = mockBarcodes[Math.floor(Math.random() * mockBarcodes.length)];
     setTimeout(() => {
@@ -87,14 +86,12 @@ export default function BarcodePage() {
   return (
     <AppShell title="Barcode Scanner">
       <div className="grid grid-cols-2 gap-6">
-        {/* Scanner panel */}
         <div className="flex flex-col gap-4">
           <Card>
             <CardHeader>
               <div className="font-bold text-white text-sm">📷 Scanner</div>
             </CardHeader>
             <div className="p-6">
-              {/* Scanner box */}
               <div
                 className={`border-2 border-dashed rounded-2xl p-10 text-center mb-5 cursor-pointer transition-all ${
                   scanning ? "border-orange-500 animate-pulse" : "border-[#2a2a2a] hover:border-[#444]"
@@ -110,7 +107,6 @@ export default function BarcodePage() {
                 </div>
               </div>
 
-              {/* Manual entry */}
               <div className="flex flex-col gap-1.5 mb-4">
                 <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
                   Barcode (manual entry)
@@ -127,7 +123,6 @@ export default function BarcodePage() {
                 </div>
               </div>
 
-              {/* Found product */}
               {found && (
                 <div className="bg-green-500/8 border border-green-500/20 rounded-xl p-4 mb-4">
                   <div className="text-xs text-green-500 uppercase tracking-widest font-semibold mb-2">Product Found</div>
@@ -136,7 +131,6 @@ export default function BarcodePage() {
                 </div>
               )}
 
-              {/* Action */}
               <div className="flex gap-2 mb-4">
                 {(["add", "remove"] as const).map((v) => (
                   <Button
@@ -150,7 +144,6 @@ export default function BarcodePage() {
                 ))}
               </div>
 
-              {/* Qty */}
               <div className="flex flex-col gap-1.5 mb-5">
                 <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Quantity</label>
                 <input
@@ -185,7 +178,6 @@ export default function BarcodePage() {
           </Card>
         </div>
 
-        {/* Scan history */}
         <Card>
           <CardHeader>
             <div className="font-bold text-white text-sm">Scan History</div>

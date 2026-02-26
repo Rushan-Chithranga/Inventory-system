@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import Sidebar from "./Sidebar";
 import { useApiRequest } from "@/lib/auth-context";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { SecurityWarningIcon } from "@hugeicons/core-free-icons";
 
 interface AppShellProps {
   children: React.ReactNode;
@@ -48,24 +50,30 @@ export default function AppShell({ children, title }: AppShellProps) {
     <div className="flex min-h-screen bg-[#0a0a0a]">
       <Sidebar lowStockCount={lowStockCount} />
       <div className="ml-60 flex-1 flex flex-col min-h-screen">
-        {/* Topbar */}
         <header className="sticky top-0 z-40 bg-[#0f0f0f] border-b border-[#1e1e1e] px-7 h-16 flex items-center justify-between">
           <h1 className="text-lg font-bold text-white">{title}</h1>
           <div className="flex items-center gap-3">
             {lowStockCount > 0 && (
-              <span className="text-xs text-orange-400 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">
-                ⚠️ {lowStockCount} low stock
+              <span className="inline-flex items-center gap-1.5 text-xs text-orange-400 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">
+                <HugeiconsIcon
+                  icon={SecurityWarningIcon}
+                  size={14}
+                  color="currentColor"
+                  strokeWidth={1.8}
+                />
+                {lowStockCount} low stock
               </span>
             )}
             <span className="text-sm text-gray-500">
               {new Date().toLocaleDateString("en-US", {
-                weekday: "short", month: "short", day: "numeric",
+                weekday: "short",
+                month: "short",
+                day: "numeric",
               })}
             </span>
           </div>
         </header>
 
-        {/* Page content */}
         <main className="flex-1 p-7">{children}</main>
       </div>
     </div>

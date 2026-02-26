@@ -13,33 +13,35 @@
     "seed": "ts-node --project tsconfig.seed.json -r tsconfig-paths/register src/lib/seed.ts"
   },
   "dependencies": {
+    "@hugeicons/core-free-icons": "^3.3.0",
+    "@hugeicons/react": "^1.1.5",
+    "bcryptjs": "^2.4.3",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.378.0",
+    "mysql2": "^3.9.4",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "typeorm": "^0.3.20",
-    "mysql2": "^3.9.4",
-    "reflect-metadata": "^0.2.2",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2",
-    "recharts": "^2.12.6",
     "react-hot-toast": "^2.4.1",
-    "lucide-react": "^0.378.0",
-    "date-fns": "^3.6.0",
-    "clsx": "^2.1.1"
+    "recharts": "^2.12.6",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/bcryptjs": "^2.4.6",
-    "@types/jsonwebtoken": "^9.0.6",
-    "typescript": "^5",
-    "tailwindcss": "^3.4.3",
-    "postcss": "^8",
     "autoprefixer": "^10",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.3",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typeorm-ts-node-commonjs": "^0.3.20",
-    "tsconfig-paths": "^4.2.0"
+    "typescript": "^5"
   }
 }
