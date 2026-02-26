@@ -22,9 +22,20 @@ A full-stack inventory management system built with **Next.js 14**, **TypeORM**,
 - ✅ **User Management** — Admin & Store Manager roles with permission matrix
 - ✅ **Authentication** — JWT login with role-based access control
 
+## 🧬 Clone Repository
+
+### 1️⃣ Clone the Project
+
+Using HTTPS:
+
+```bash
+git clone https://github.com/your-username/stockwise.git
+```
+
 ## 🛠️ Setup Instructions
 
 ### 1. Prerequisites
+
 - Node.js 18+
 - MySQL 8.0+
 
@@ -41,6 +52,7 @@ cp .env.example .env.local
 ```
 
 Edit `.env.local`:
+
 ```
 DB_HOST=localhost
 DB_PORT=3306
@@ -72,6 +84,7 @@ npm run seed
 ```
 
 This creates:
+
 - **Admin**: `admin@stockwise.com` / `admin123`
 - **Manager**: `manager@stockwise.com` / `manager123`
 - 8 sample products and 8 sales records
@@ -116,68 +129,72 @@ src/
 ## 🗄️ Database Schema
 
 ### Products Table
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INT PK | Auto increment |
-| name | VARCHAR(255) | Product name |
-| description | TEXT | Optional description |
-| category | VARCHAR(100) | Product category |
-| price | DECIMAL(10,2) | Unit price |
-| stock | INT | Current quantity |
-| low_stock_threshold | INT | Alert threshold |
-| barcode | VARCHAR(100) | Barcode string |
-| is_active | BOOLEAN | Soft delete flag |
+
+| Column              | Type          | Description          |
+| ------------------- | ------------- | -------------------- |
+| id                  | INT PK        | Auto increment       |
+| name                | VARCHAR(255)  | Product name         |
+| description         | TEXT          | Optional description |
+| category            | VARCHAR(100)  | Product category     |
+| price               | DECIMAL(10,2) | Unit price           |
+| stock               | INT           | Current quantity     |
+| low_stock_threshold | INT           | Alert threshold      |
+| barcode             | VARCHAR(100)  | Barcode string       |
+| is_active           | BOOLEAN       | Soft delete flag     |
 
 ### Sales Table
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INT PK | Auto increment |
-| product_id | INT FK | Reference to product |
-| product_name | VARCHAR(255) | Denormalized name |
-| quantity | INT | Units sold |
-| unit_price | DECIMAL(10,2) | Price at time of sale |
-| total_price | DECIMAL(10,2) | quantity × price |
-| sale_date | DATETIME | Transaction timestamp |
+
+| Column       | Type          | Description           |
+| ------------ | ------------- | --------------------- |
+| id           | INT PK        | Auto increment        |
+| product_id   | INT FK        | Reference to product  |
+| product_name | VARCHAR(255)  | Denormalized name     |
+| quantity     | INT           | Units sold            |
+| unit_price   | DECIMAL(10,2) | Price at time of sale |
+| total_price  | DECIMAL(10,2) | quantity × price      |
+| sale_date    | DATETIME      | Transaction timestamp |
 
 ### Users Table
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INT PK | Auto increment |
-| name | VARCHAR(255) | Full name |
-| email | VARCHAR(255) UNIQUE | Login email |
-| password | VARCHAR(255) | Bcrypt hash |
-| role | ENUM | Admin / Store Manager |
-| is_active | BOOLEAN | Account status |
+
+| Column    | Type                | Description           |
+| --------- | ------------------- | --------------------- |
+| id        | INT PK              | Auto increment        |
+| name      | VARCHAR(255)        | Full name             |
+| email     | VARCHAR(255) UNIQUE | Login email           |
+| password  | VARCHAR(255)        | Bcrypt hash           |
+| role      | ENUM                | Admin / Store Manager |
+| is_active | BOOLEAN             | Account status        |
 
 ### Reports Table
-| Column | Type | Description |
-|--------|------|-------------|
-| id | INT PK | Auto increment |
-| type | ENUM | Report type |
-| summary | TEXT | Generated summary |
-| data | JSON | Raw report data |
-| status | ENUM | Good / Warning / High |
-| generated_at | DATETIME | Creation time |
+
+| Column       | Type     | Description           |
+| ------------ | -------- | --------------------- |
+| id           | INT PK   | Auto increment        |
+| type         | ENUM     | Report type           |
+| summary      | TEXT     | Generated summary     |
+| data         | JSON     | Raw report data       |
+| status       | ENUM     | Good / Warning / High |
+| generated_at | DATETIME | Creation time         |
 
 ## 🔐 API Endpoints
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/api/auth/login` | ❌ | Login |
-| POST | `/api/auth/logout` | ✅ | Logout |
-| GET | `/api/dashboard` | ✅ | Stats & charts |
-| GET | `/api/products` | ✅ | List products |
-| POST | `/api/products` | ✅ | Create product |
-| PUT | `/api/products/:id` | ✅ | Update product |
-| DELETE | `/api/products/:id` | Admin | Soft delete |
-| POST | `/api/products/:id/adjust` | ✅ | Adjust stock |
-| GET | `/api/products/barcode?code=` | ✅ | Barcode lookup |
-| GET | `/api/sales` | ✅ | List sales |
-| POST | `/api/sales` | ✅ | Record sale |
-| GET | `/api/reports` | ✅ | List reports |
-| POST | `/api/reports` | ✅ | Generate report |
-| GET | `/api/users` | Admin | List users |
-| POST | `/api/users` | Admin | Create user |
+| Method | Endpoint                      | Auth  | Description     |
+| ------ | ----------------------------- | ----- | --------------- |
+| POST   | `/api/auth/login`             | ❌    | Login           |
+| POST   | `/api/auth/logout`            | ✅    | Logout          |
+| GET    | `/api/dashboard`              | ✅    | Stats & charts  |
+| GET    | `/api/products`               | ✅    | List products   |
+| POST   | `/api/products`               | ✅    | Create product  |
+| PUT    | `/api/products/:id`           | ✅    | Update product  |
+| DELETE | `/api/products/:id`           | Admin | Soft delete     |
+| POST   | `/api/products/:id/adjust`    | ✅    | Adjust stock    |
+| GET    | `/api/products/barcode?code=` | ✅    | Barcode lookup  |
+| GET    | `/api/sales`                  | ✅    | List sales      |
+| POST   | `/api/sales`                  | ✅    | Record sale     |
+| GET    | `/api/reports`                | ✅    | List reports    |
+| POST   | `/api/reports`                | ✅    | Generate report |
+| GET    | `/api/users`                  | Admin | List users      |
+| POST   | `/api/users`                  | Admin | Create user     |
 
 ## 🎨 UI Theme
 
