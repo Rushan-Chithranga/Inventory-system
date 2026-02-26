@@ -5,7 +5,7 @@ import AppShell from "@/components/layout/AppShell";
 import { Card, CardHeader, StatCard, Button, Modal, Select, Badge, Table, Th, Td, EmptyState } from "@/components/ui";
 import { useApiRequest } from "@/lib/auth-context";
 import { ReportType } from "@/types";
-import { DollarCircleIcon } from "@hugeicons/core-free-icons";
+import { DollarCircleIcon, RepostIcon } from "@hugeicons/core-free-icons";
 
 const REPORT_TYPES = [
   { value: "Stock Level", label: "Stock Level" },
@@ -77,7 +77,7 @@ export default function ReportsPage() {
             </thead>
             <tbody>
               {reports.length === 0 ? (
-                <tr><td colSpan={5}><EmptyState icon="📋" message="No reports generated yet" /></td></tr>
+                <tr><td colSpan={5}><EmptyState icon={RepostIcon} message="No reports generated yet" /></td></tr>
               ) : reports.map((r) => (
                 <tr key={r.id} className="hover:bg-white/[0.02]">
                   <Td>

@@ -8,6 +8,7 @@ import {
 } from "@/components/ui";
 import { useApiRequest } from "@/lib/auth-context";
 import { ProductType } from "@/types";
+import { Package } from "@hugeicons/core-free-icons";
 
 const CATEGORIES = [
   { value: "", label: "All Categories" },
@@ -132,7 +133,7 @@ export default function ProductsPage() {
             </thead>
             <tbody>
               {products.length === 0 ? (
-                <tr><td colSpan={7}><EmptyState icon="📦" message="No products found" /></td></tr>
+                <tr><td colSpan={7}><EmptyState icon={Package} message="No products found" /></td></tr>
               ) : products.map((p) => (
                 <tr key={p.id} className="hover:bg-white/[0.02]">
                   <Td>

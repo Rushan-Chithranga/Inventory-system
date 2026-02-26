@@ -12,8 +12,6 @@ import {
   Chart01Icon,
   ArchiveIcon,
   User02Icon,
-  Analytics01Icon,
-  BarcodeScanIcon,
 } from "@hugeicons/core-free-icons";
 type IconType = React.ComponentProps<typeof HugeiconsIcon>["icon"];
 
@@ -34,7 +32,7 @@ const NAV: NavItem[] = [
 const REPORTS: NavItem[] = [
   { href: "/sales", label: "Sales Report", icon: Chart01Icon },
   { href: "/stock", label: "Stock Report", icon: ArchiveIcon },
-  { href: "/reports", label: "All Reports", icon: Analytics01Icon },
+  // { href: "/reports", label: "All Reports", icon: Analytics01Icon },
 ];
 
 const ADMIN: NavItem[] = [

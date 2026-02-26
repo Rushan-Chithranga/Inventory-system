@@ -5,7 +5,7 @@ import AppShell from "@/components/layout/AppShell";
 import { Card, CardHeader, StatCard, Button, Badge, Table, Th, Td, EmptyState } from "@/components/ui";
 import { useApiRequest } from "@/lib/auth-context";
 import { SaleType } from "@/types";
-import { DollarCircleIcon } from "@hugeicons/core-free-icons";
+import { Activity03Icon, CheckListIcon, DollarCircleIcon, TransactionHistoryIcon } from "@hugeicons/core-free-icons";
 
 const CATEGORIES = ["", "Electronics", "Furniture", "Stationery", "Clothing", "Food & Beverage", "Tools", "Other"];
 
@@ -45,8 +45,8 @@ export default function SalesPage() {
     <AppShell title="Sales Report">
       <div className="grid grid-cols-3 gap-4 mb-6">
         <StatCard label="Total Revenue" value={fmt(totalRevenue)} icon={DollarCircleIcon} />
-        <StatCard label="Transactions" value={sales.length} icon={DollarCircleIcon} />
-        <StatCard label="Units Sold" value={totalQty} icon={DollarCircleIcon} />
+        <StatCard label="Transactions" value={sales.length} icon={TransactionHistoryIcon} />
+        <StatCard label="Units Sold" value={totalQty} icon={CheckListIcon} />
       </div>
 
       <div className="flex items-center gap-3 mb-5 flex-wrap">
@@ -110,7 +110,7 @@ export default function SalesPage() {
             </thead>
             <tbody>
               {sales.length === 0 ? (
-                <tr><td colSpan={7}><EmptyState icon="📊" message="No sales data for selected filters" /></td></tr>
+                <tr><td colSpan={7}><EmptyState icon={Activity03Icon} message="No sales data for selected filters" /></td></tr>
               ) : sales.map((s) => (
                 <tr key={s.id} className="hover:bg-white/[0.02]">
                   <Td><span className="font-mono text-xs text-gray-600">#{String(s.id).padStart(4, "0")}</span></Td>

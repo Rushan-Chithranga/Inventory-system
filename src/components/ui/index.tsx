@@ -314,12 +314,19 @@ export function EmptyState({
   icon,
   message,
 }: {
-  icon: string;
+  icon: IconType;
   message: string;
 }) {
   return (
-    <div className="text-center py-16 text-gray-600">
-      <div className="text-5xl mb-3">{icon}</div>
+    <div className="flex flex-col items-center justify-center py-16 text-gray-600 text-center">
+      <HugeiconsIcon
+        icon={icon}
+        size={40}
+        color="currentColor"
+        strokeWidth={1.5}
+        className="mb-3"
+      />
+
       <p className="text-sm">{message}</p>
     </div>
   );

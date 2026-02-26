@@ -5,6 +5,7 @@ import AppShell from "@/components/layout/AppShell";
 import { Card, CardHeader, Button, EmptyState, Badge, Table, Th, Td } from "@/components/ui";
 import { useApiRequest } from "@/lib/auth-context";
 import { ProductType } from "@/types";
+import { ScanIcon } from "@hugeicons/core-free-icons";
 
 interface ScanEntry {
   id: number;
@@ -186,7 +187,7 @@ export default function BarcodePage() {
             )}
           </CardHeader>
           {history.length === 0 ? (
-            <EmptyState icon="📋" message="No scans yet. Start scanning to see history." />
+            <EmptyState icon={ScanIcon} message="No scans yet. Start scanning to see history." />
           ) : (
             <Table>
               <thead>
